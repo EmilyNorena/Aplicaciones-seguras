@@ -26,3 +26,21 @@ Documentación:
 https://docs.aws.amazon.com/es_es/linux/al2023/ug/ec2-lamp-amazon-linux-2023.html
 
 https://docs.aws.amazon.com/es_es/linux/al2023/ug/SSL-on-amazon-linux-2023.html
+
+## Configuración de un VirtualHost
+Creamos el archivo secure-application.duckdns.org.conf dentro del directorio /etc/httpd/conf.d
+
+<img width="406" height="224" alt="image" src="https://github.com/user-attachments/assets/b6fbaeb2-60ff-47a9-a5c6-ae18155200df" />
+
+Recordemos que todos nuestros archivos estáticos (HTML, CSS Y JS) se encuentran en el directorio /var/www/html.
+
+<img width="1998" height="1002" alt="image" src="https://github.com/user-attachments/assets/934a653d-afcd-46fd-9642-458fecdb8146" />
+
+## Configuración TLS
+Utilizamos Certbot para obtener certificados TLS de Let’s Encrypt.
+`sudo dnf install certbot python3-certbot-apache -y`
+`sudo certbot --apache -d secure-application.duckdns.org`
+
+## Configuración DNS
+Usamos DuckDNS para obtener nuestro dominio gratuito: secure-application.duckdns.org. Le debemos asignar la dirección IP de nuestro servidor Apache (cliente).
+A continuación, en nuestro servidor Apache, nos ubicamos dentro del directorio /etc/httpd/conf.d
