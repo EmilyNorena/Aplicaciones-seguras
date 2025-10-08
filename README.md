@@ -64,7 +64,7 @@ Funcionalidades implementadas:
     
 - Security Config
   - Filtro JWT para proteger endpoints
-  - Configuración CSRF
+  - Configuración de CORS y CSRF
 
 - Gestión de Usuarios
   - Registro con encriptación BCrypt
@@ -75,3 +75,7 @@ Funcionalidades implementadas:
   - /auth/** → Públicos (login/register)
   - Resto de endpoints → Requieren JWT
 
+## Proxy + TLS
+Creamos un dominio para el backend haciendo uso de DuckDNS: secure-app-back.duckdns.org. Usamos este dominio para configurar el canal seguro entre el frontend y el backend. En el servidor Spring instalamos Nginx con el fin de separar las responsabilidades de la siguiente forma:
+- Nginx: Maneja SSL, carga estática
+- Spring Boot: Solo lógica de negocio 
